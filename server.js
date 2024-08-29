@@ -8,9 +8,15 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const path = require("path");
+const cors = require('cors')
 
 dbConnect();
 const app = express();
+app.use(cors({
+  origin: '*', // Replace '*' with specific origins if you want to restrict access
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 
 // Main routes
